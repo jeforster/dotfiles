@@ -1,0 +1,363 @@
+" -------------------------------------------------------------------------------
+" Basic Settings
+" -------------------------------------------------------------------------------
+set nocompatible          " use vim rather than vi
+filetype off              " required
+
+filetype indent on        " load filetype-specific indent files
+syntax enable             " enable syntax processing
+let mapleader="\<Space>"  " leader is space
+
+set softtabstop=2         " number of spaces for a tab
+set expandtab             " tabs are spaces
+set sw=2                  " shiftwidth
+set laststatus=2          " always display status line
+set cmdheight=2           " height of the command bar
+set so=8                  " scroll when close to top/bottom of screen
+set history=50            " remember history
+
+set number                " show line numbers
+set showmatch             " highlight matching [{()}]
+
+set incsearch             " search as characters are entered
+set hlsearch              " highlight matches
+set ignorecase            " ignore case by default for searched
+set smartcase             " case-sensitive search when uppercase letters are used
+set incsearch             " highlight search results as typed
+
+set wildmenu              " visual autocomplete for command menu
+set confirm               " raise dialogue instead of failing
+
+set hidden                " allow switching buffers without saving
+set showcmd               " show info about the current command
+set ruler                 " display cursor position
+set autoread              " reload changed files
+set mouse=a               " allow mouse
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw 
+
+" For regular expressions turn magic on
+set magic
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+set whichwrap+=<,>,h,l
+
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+" Use the system clipboard
+set clipboard=unnamed
+
+" No annoying sounds on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" Ignore compiled files
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX nonsense
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.orig                           " Merge resolution files
+
+" -------------------------------------------------------------------------------
+" Plugins
+" -------------------------------------------------------------------------------
+" Install Vim Plug if not already
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+endif
+
+" Start Vim Plug
+call plug#begin('~/.vim/plugged')
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jszakmeister/vim-togglecursor'
+Plug 'flazz/vim-colorschemes'
+Plug 'jiangmiao/auto-pairs'
+Plug 'justinmk/vim-sneak'
+Plug 'lervag/vimtex'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'sjl/gundo.vim'
+Plug 'szw/vim-maximizer'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'
+Plug 'easymotion/vim-easymotion'
+Plug 'mbbill/undotree'
+Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script'
+Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-startify'
+Plug 'sunaku/vim-shortcut'
+Plug 'colepeters/spacemacs-theme.vim'
+Plug 'mileszs/ack.vim'
+Plug 'ktonga/vim-follow-my-lead'
+
+call plug#end()
+
+" smooth scrolling
+noremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <C-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" airline settings
+let g:airline_extensions = ['tabline', 'branch']
+let g:airline_theme='wombat'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_skip_empty_sections = 1
+set guifont=Inconsolata_for_Powerline:h16
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+
+" startify settings
+function! s:filter_header(lines) abort
+    let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
+    let centered_lines = map(copy(a:lines),
+        \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
+    return centered_lines
+endfunction
+let g:rndnum = str2nr(matchstr(reltimestr(reltime()), '\.\zs\d\+')[1:]) % 4
+if g:rndnum == 0
+let custom_header = [
+  \'',
+  \' /##    /##                ',
+  \'| ##   | ##                ',
+  \'| ##   | ##/##/######/#### ',
+  \'|  ## / ##/__/ ##_  ##_  ##',
+  \' \  ## ##/ /#| ## \ ## \ ##',
+  \'  \  ###/ | #| ## | ## | ##',
+  \'   \  #/  | #| ## | ## | ##',
+  \'    \_/   |__|__/ |__/ |__/',
+  \'                           ',
+  \'',
+  \ ]
+elseif g:rndnum == 1
+let g:custom_header = [
+  \ '                           ',
+  \ '         __                ',
+  \ ' __  __ /\_\  _____ ____   ',
+  \ '/\ \/\ \\/\ \/\  __  __ \  ',
+  \ '\ \ \_/ |\ \ \ \ \/\ \/\ \ ',
+  \ ' \ \___/  \ \_\ \_\ \_\ \_\',
+  \ '  \/__/    \/_/\/_/\/_/\/_/',
+  \ ]
+elseif g:rndnum == 2
+let g:custom_header = [
+  \ ' ____   ____  _                ',
+  \ '|_  _| |_  _|(_)               ',
+  \ '  \ \   / /  __   _ .--..--.   ',
+  \ '   \ \ / /  [  | [ `.-. .-. |  ',
+  \ '    \ v /    | |  | | | | | |  ',
+  \ '     \_/    [___][___||__||__] ',
+  \ ]
+else
+let g:custom_header = [
+  \ ' __    __   ______   ___  ___  ',
+  \ '|  |  |  | (_    _) |   \/   | ',
+  \ '|  |  |  |   |  |   |        | ',
+  \ '|  |  |  |   |  |   |  |\/|  | ',
+  \ ' \  \/  /   _|  |_  |  |  |  | ',
+  \ '  \____/   (______) |__|  |__| ',
+  \ ]
+endif
+let g:startify_custom_header = s:filter_header(g:custom_header)
+
+" shortcut
+let g:lmap =  {}
+let g:lmap.f = { 'name' : 'File Menu' }
+let g:lmap.o = { 'name' : 'Open Stuff' }
+
+" colorschemes
+colorscheme molokai
+
+:set guioptions-=T  " remove toolbar
+
+" -------------------------------------------------------------------------------
+" Key Remappings
+" -------------------------------------------------------------------------------
+" Use fd as ESC
+inoremap fd <esc>
+
+" Easily yank to EOL
+nnoremap Y y$
+
+" j and k move over visual lines
+nnoremap j gj
+nnoremap k gk
+
+" allow multiple indentation/deindentation in visual mode
+vnoremap < <gv
+vnoremap > >gv
+
+" easily go to matched pairs with tab
+nnoremap <Tab> %
+vnoremap <Tab> %
+
+" Bash like keys for the command line
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-K> <C-U>
+
+" Visual mode pressing * or # searches for the current selection
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+" -------------------------------------------------------------------------------
+" Leader Mappings
+" -------------------------------------------------------------------------------
+nmap <Leader><TAB> <C-^>
+nmap <Leader>? :Unite output:nmap\ \<Leader\><CR>
+nmap <Leader>;  <Plug>Commentary
+nmap <Leader>;; <Plug>CommentaryLine
+omap <Leader>;  <Plug>Commentary
+vmap <Leader>;  <Plug>Commentary
+nmap <Leader>au :UndotreeToggle<CR>
+nmap <Leader>bb :buffers<CR>
+nmap <Leader>bd :bdelete<CR>
+nmap <Leader>bh :Startify<CR>
+nmap <Leader>bn :bn<CR>
+nmap <Leader>bp :bp<CR>
+nmap <Leader>bR :e<CR>
+nmap <silent> <Leader>el :<C-u>call ToggleErrors()<CR>
+nmap <silent> <Leader>en :lnext<CR>
+nmap <silent> <Leader>ep :lprev<CR>
+nmap <Leader>fed :e ~/.vimrc<CR>
+nmap <Leader>feR :source ~/.vimrc<CR>
+nmap <Leader>ff :CtrlPCurFile<CR>
+nmap <Leader>fr :CtrlPMRU<CR>
+nmap <Leader>fs :w<CR>
+nmap <Leader>fS :wa<CR>
+nmap <Leader>ft :NERDTreeToggle<CR>
+nmap <Leader>gb :Gblame<CR>
+nmap <Leader>gd :Gdiff<CR>
+nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>j= mzgg=G`z
+nmap <Leader>pf :CtrlPRoot<CR>
+nmap <Leader>pt :call spacemacs#toggleExplorerAtRoot()<CR>
+nmap <Leader>qq :qa<CR>
+nmap <Leader>qQ :qa!<CR>
+nmap <Leader>qs :xa<CR>
+nmap <Leader>sc :noh<CR>
+nmap <Leader>sp :Ag<SPACE>
+nmap <Leader>tn :set number!<CR>
+nmap <Leader>tl :set wrap!<CR>
+nmap <Leader>Td :GitGutterToggle<CR>
+nmap <Leader>w- :sp<CR>
+nmap <Leader>w/ :vsp<CR>
+nmap <Leader>w= <C-W>=
+nmap <Leader>wd :q<CR>
+nmap <Leader>wh <C-W>h
+nmap <Leader>wj <C-W>j
+nmap <Leader>wk <C-W>k
+nmap <Leader>wl <C-W>l
+nmap <Leader>ws <C-W>s
+nmap <Leader>wv <C-W>v
+nmap <Leader>wm :MaximizerToggle<CR>
+nmap <Leader>ww <C-W><C-W>
+nmap <Leader>y <Plug>(easymotion-bd-jk)
+
+" -------------------------------------------------------------------------------
+" Insert Mode Mappings
+" -------------------------------------------------------------------------------
+imap <C-n> <Down>
+imap <C-p> <Up>
+imap <C-B> <Left>
+imap <C-F> <Right>
+imap <C-A> <Home>
+imap <C-E> <End>
+
+" -------------------------------------------------------------------------------
+" Autocommands
+" -------------------------------------------------------------------------------
+" stop autocomment
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Resize splits when the window is resized
+autocmd VimResized * :wincmd =
+
+" -------------------------------------------------------------------------------
+" Change Cursor Shape in terminal
+" -------------------------------------------------------------------------------
+if exists('$TMUX')
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\" " Block in normal mode
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" " Vertical bar in insert mode
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\" " Underline in replace mode
+else
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+  let &t_SR = "\<Esc>]50;CursorShape=2\x7" " Underline in replace mode
+endif
+
+" -------------------------------------------------------------------------------
+" GUI Settings
+" -------------------------------------------------------------------------------
+if has("gui_running")
+  colorscheme spacemacs-theme
+  let g:airline_theme='base16'
+  set lines=70 columns=150
+endif
+
+" -------------------------------------------------------------------------------
+" Helper Functions
+" -------------------------------------------------------------------------------
+function! VisualSelection(direction, extra_filter) range
+  let l:saved_reg = @"
+  execute "normal! vgvy"
+
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+  if a:direction == 'gv'
+    call CmdLine("Ag \"" . l:pattern . "\" " )
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  endif
+
+  let @/ = l:pattern
+  let @" = l:saved_reg
+endfunction

@@ -1,0 +1,6 @@
+# dotfile backups
+backups/
+
+# custom dotfiles
+extra
+path

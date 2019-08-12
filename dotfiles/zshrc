@@ -1,0 +1,63 @@
+###############################################################################
+# Source Shared Dotfiles
+###############################################################################
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,exports,aliases,functions,extra}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+###############################################################################
+# Plugins
+###############################################################################
+# Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh && zplug update --self
+fi
+
+# Essential
+source ~/.zplug/init.zsh
+
+# Theme
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
+
+# Plugins
+zplug "arzzen/calc.plugin.zsh"
+zplug "djui/alias-tips"
+zplug "gko/ssh-connect"
+zplug "RobertAudi/tsm"
+zplug "zdharma/fast-syntax-highlighting"
+
+# Oh-My-Zsh Plugins
+zplug "plugins/git",            from:oh-my-zsh
+zplug "plugins/sudo",           from:oh-my-zsh
+zplug "plugins/web-search",     from:oh-my-zsh
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
+
+# Zsh-Users Plugins
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+# Mac Specific Plugins
+if [[ `uname` == 'Darwin' ]]; then
+  zplug "plugins/brew",         from:oh-my-zsh
+  zplug "plugins/osx",          from:oh-my-zsh
+fi
+
+# Install packages that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
+zplug load

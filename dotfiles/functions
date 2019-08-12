@@ -1,0 +1,45 @@
+###############################################################################
+# General
+###############################################################################
+
+# Create a directory and cd into it
+function mkcd() {
+  if [ "$#" -ne 1 ]; then
+    echo "usage: $0 <directory>"
+    return 1
+  fi
+
+  if [ ! -d "$1" ]; then 
+    mkdir -p "$1"
+  fi
+
+  cd "$1"
+}
+
+
+###############################################################################
+# Mac Specific Functions
+###############################################################################
+if [[ `uname` == 'Darwin' ]]; then
+
+  # Update homebrew 
+  brewup() {
+    brew update
+    brew upgrade
+    brew cleanup
+  }
+
+  # Clean up LaunchServices to remove duplicates in the “Open With” menu
+  lscleanup() {
+    /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+    killall Finder
+  }
+
+  # Empty the Trash
+  emptytrash() {
+    sudo rm -rfv /Volumes/*/.Trashes 
+    sudo rm -rfv ~/.Trash 
+    sudo rm -rfv /private/var/log/asl/*.asl
+  }
+  
+fi

@@ -1,0 +1,78 @@
+###############################################################################
+# General Aliases
+###############################################################################
+
+# cd
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+alias ~="cd ~"
+
+alias -- -='cd -'
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
+
+# Directory
+alias md='mkdir -p'
+alias rd=rmdir
+alias d='dirs -v | head -10'
+
+# Vim
+alias vi=vim
+alias g=git
+
+# ls
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
+
+# Push and pop directories
+alias pu='pushd'
+alias po='popd'
+
+
+###############################################################################
+# Linux Specific Aliases
+###############################################################################
+# Normalize `open` across Linux, macOS, and Windows.
+if [ $(uname -s) == 'Linux' ]; then
+	if grep -q Microsoft /proc/version; then
+		# Ubuntu on Windows using WSL
+		alias open='explorer.exe';
+	else
+		alias open='xdg-open';
+	fi
+fi
+
+
+###############################################################################
+# Mac Specific Aliases
+###############################################################################
+if [[ `uname` == 'Darwin' ]]; then
+
+  # Remove .DS_Store files 
+  alias dscleanup=find . -type f -name "*.DS_Store" -ls -delete
+
+  # Show/hide hidden files in Finder
+  alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+  alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+  # Lock the screen (when going AFK)
+  alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+  # macOS has no `md5sum`, so use `md5` as a fallback
+  command -v md5sum > /dev/null || alias md5sum="md5"
+
+  # macOS has no `sha1sum`, so use `shasum` as a fallback
+  command -v sha1sum > /dev/null || alias sha1sum="shasum"
+fi
