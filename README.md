@@ -27,4 +27,24 @@ If you want to pull or add a new file, add it to the dotfiles folder and re-run 
 
 ## Customizations
 
-To add configurations that you don't want to commit put them into `~/.extras`
+Use `~/.path` to expand your `$PATH` environment variable.  To add general configurations that you don't want to commit put them into `~/.extras`.  
+
+You can also overwrite any settings and put specific local configs in:
+
+* `~/.aliases.local`
+* `~/.bash_profile.local`
+* `~/.bashrc.local`
+* `~/.exports.local`
+* `~/.functions.local`
+* `~/.gitconfig.local`
+* `~/.tmux.conf.local`
+* `~/.vimrc.local`
+* `~/.zshrc.local`
+
+For example your `~/.gitconfig.local` might look like this:
+
+```
+[user]
+  name = Jeff Forster
+  email = jeff@example.com
+```

@@ -1,9 +1,6 @@
 ###############################################################################
 # Source Shared Dotfiles
 ###############################################################################
-# Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{path,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
@@ -61,3 +58,9 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+
+###############################################################################
+# Local Config
+###############################################################################
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

@@ -1,13 +1,11 @@
 ###############################################################################
 # Source Shared Dotfiles
 ###############################################################################
-# Load the shell dotfiles:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{path,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
+
 
 ###############################################################################
 # Bash It
@@ -72,3 +70,9 @@ export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
+
+
+###############################################################################
+# Local Config
+###############################################################################
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

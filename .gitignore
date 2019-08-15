@@ -4,3 +4,6 @@ backups/
 # custom dotfiles
 extra
 path
+
+# local configs
+*.local

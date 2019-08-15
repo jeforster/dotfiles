@@ -76,3 +76,6 @@ if [[ `uname` == 'Darwin' ]]; then
   # macOS has no `sha1sum`, so use `shasum` as a fallback
   command -v sha1sum > /dev/null || alias sha1sum="shasum"
 fi
+
+# local config
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local

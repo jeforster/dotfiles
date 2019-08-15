@@ -16,3 +16,6 @@ export LC_ALL='en_US.UTF-8';
 
 # Homebrew cask install directory
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# local config
+[[ -f ~/.exports.local ]] && source ~/.exports.local
