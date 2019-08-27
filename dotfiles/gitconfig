@@ -12,12 +12,12 @@
 	ba = branch --all
 	bc = rev-parse --abbrev-ref HEAD
 	co = checkout
-	cb = checkout -b
-	cm = checkout master
+	cob = checkout -b
+	com = checkout master
 	cl = clone
 	ci = commit
-	cm = commit -m
-	cam = commit -am
+	cim = commit -m
+	ciam = commit -am
 	d = diff
 	dc = diff --cached
 	f = fetch
@@ -29,6 +29,7 @@
 	ma = merge --abort
 	mc = merge --continue
 	ms = merge --skip
+	mm = merge master
 	ps = push
 	pso = push origin
 	pl = pull
@@ -37,6 +38,7 @@
 	rbc = rebase --continue
 	rbi = rebase --interactive
 	rbs = rebase --skip
+	rbm = rebase master
 	re = reset
 	reh = reset --hard
 	rem = reset --mixed
