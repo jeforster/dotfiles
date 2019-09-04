@@ -34,7 +34,7 @@ backup_dotfile() {
 link_dotfile() {
   dotfile_name=$1
   echo -n "creating a new symlink..."
-  ln -s $dotfile_name ~/.$dotfile_name
+  ln -sv $dotfile_directory/$dotfile_name ~/.$dotfile_name
   echo "done"
 }
 
@@ -47,7 +47,7 @@ backup_and_link_dotfile() {
   # remove the path to get just the file name
   dotfile_name=$( basename $dotfile )
 
-  echo -e "installing \e[34m~/.$dotfile_name\e[0m"
+  echo -e "installing ~/.$dotfile_name"
 
   backup_dotfile $dotfile_name
   link_dotfile $dotfile_name
