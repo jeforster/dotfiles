@@ -45,7 +45,7 @@ alias po='popd'
 # Linux Specific Aliases
 ###############################################################################
 # Normalize `open` across Linux, macOS, and Windows.
-if [ $(uname -s) == 'Linux' ]; then
+if [[ `uname` == 'Linux' ]]; then
 	if grep -q Microsoft /proc/version; then
 		# Ubuntu on Windows using WSL
 		alias open='explorer.exe';
