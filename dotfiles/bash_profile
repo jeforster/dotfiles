@@ -2,4 +2,6 @@
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
 # Local config
-[[ -f ~/.bash_profile.local ]] && source ~/.bash_profile.local
+if [[ -f ~/.bash_profile.local ]]; then
+    source ~/.bash_profile.local
+fi

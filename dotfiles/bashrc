@@ -75,4 +75,6 @@ source "$BASH_IT"/bash_it.sh
 ###############################################################################
 # Local Config
 ###############################################################################
-[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+if [[ -f ~/.bashrc.local ]]; then
+  source ~/.bashrc.local
+fi
