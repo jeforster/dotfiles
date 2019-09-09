@@ -78,4 +78,6 @@ if [[ `uname` == 'Darwin' ]]; then
 fi
 
 # local config
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local
+if [[ -f ~/.aliases.local ]]; then
+  source ~/.aliases.local
+fi

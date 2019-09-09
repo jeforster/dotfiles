@@ -48,4 +48,6 @@ fi
 ###############################################################################
 # Local Functions
 ###############################################################################
-[[ -f ~/.functions.local ]] && source ~/.functions.local
+if [[ -f ~/.functions.local ]]; then
+  source ~/.functions.local
+fi

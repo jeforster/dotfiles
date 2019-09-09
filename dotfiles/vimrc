@@ -139,7 +139,8 @@ let g:airline_theme='wombat'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_skip_empty_sections = 1
-set guifont=Inconsolata_for_Powerline:h16
+set macligatures
+set guifont=Fira\ Code:h12
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
