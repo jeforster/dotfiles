@@ -101,7 +101,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+if v:version > 704 || v:version == 704 && has('patch1587')
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+end
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
