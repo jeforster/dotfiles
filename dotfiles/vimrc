@@ -139,7 +139,6 @@ let g:airline_theme='wombat'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_skip_empty_sections = 1
-set macligatures
 set guifont=Fira\ Code:h12
 let g:airline_mode_map = {
     \ '__' : '-',
@@ -327,11 +326,15 @@ autocmd VimResized * :wincmd =
 if exists('$TMUX')
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\" " Block in normal mode
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" " Vertical bar in insert mode
-  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\" " Underline in replace mode
+  if v:version > 704 || v:version == 704 && has('patch687')
+    let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\" " Underline in replace mode
+  end
 else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
   let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-  let &t_SR = "\<Esc>]50;CursorShape=2\x7" " Underline in replace mode
+  if v:version > 704 || v:version == 704 && has('patch687')
+    let &t_SR = "\<Esc>]50;CursorShape=2\x7" " Underline in replace mode
+  end
 endif
 
 " -------------------------------------------------------------------------------
@@ -341,6 +344,7 @@ if has("gui_running")
   colorscheme spacemacs-theme
   let g:airline_theme='base16'
   set lines=70 columns=150
+  set macligatures
 endif
 
 " -------------------------------------------------------------------------------
