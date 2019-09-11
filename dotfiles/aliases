@@ -61,7 +61,7 @@ fi
 if [[ `uname` == 'Darwin' ]]; then
 
   # Remove .DS_Store files 
-  alias dscleanup="find . -type f -name "*.DS_Store" -ls -delete"
+  alias dscleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
   # Show/hide hidden files in Finder
   alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
