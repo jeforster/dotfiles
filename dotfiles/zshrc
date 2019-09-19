@@ -20,7 +20,8 @@ source ~/.zplug/init.zsh
 
 # Theme
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
+POWERLEVEL9K_CONTEXT_TEMPLATE="\u001b[32m%n\u001b[37m@\u001b[35m%m"
 
 # Plugins
 zplug "arzzen/calc.plugin.zsh"
