@@ -32,6 +32,7 @@
 	mm = merge master
 	ps = push
 	pso = push origin
+	psoh = push origin HEAD
 	pl = pull
 	rb = rebase
 	rba = rebase --abort
