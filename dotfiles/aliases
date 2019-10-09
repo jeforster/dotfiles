@@ -3,6 +3,7 @@
 ###############################################################################
 
 # cd
+alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
@@ -26,8 +27,12 @@ alias md='mkdir -p'
 alias rd=rmdir
 alias d='dirs -v | head -10'
 
-# Vim
+# Editors
 alias vi=vim
+alias v=vim
+alias e=emacs
+
+# git
 alias g=git
 
 # ls
