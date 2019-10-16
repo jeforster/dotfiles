@@ -1,6 +1,10 @@
 # Up and down arrow search based on characters already typed
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+"\eOA": history-search-backward
+"\eOB": history-search-forward
+"\C-p": history-search-backward
+"\C-n": history-search-forward
 
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
