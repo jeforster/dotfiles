@@ -6,6 +6,7 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 done;
 unset file;
 
+
 ###############################################################################
 # Plugins
 ###############################################################################
@@ -59,6 +60,10 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+# Ctrl-p/Ctrl-n searches history of what has already been typed
+bindkey "^P" up-line-or-beginning-search
+bindkey "^N" down-line-or-beginning-search
 
 
 ###############################################################################
