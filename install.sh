@@ -65,11 +65,19 @@ backup_and_link_all_dotfiles() {
   done
 }
 
+# reload the shell to source the new dotfiles
+reload_shell() {
+  if [ ! -z "$SHELL" ]; then
+    exec $SHELL
+  fi
+}
+
 main() {
   get_directories
   cd $dotfile_directory
   backup_and_link_all_dotfiles
   cd $current_directory
+  reload_shell
 }
 
 main "$@"
