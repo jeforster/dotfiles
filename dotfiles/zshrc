@@ -21,9 +21,18 @@ source ~/.zplug/init.zsh
 
 # Theme
 POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
-POWERLEVEL9K_CONTEXT_TEMPLATE="\u001b[32m%n\u001b[37m@\u001b[35m%m"
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+POWERLEVEL9K_CONTEXT_TEMPLATE=" %m"
+POWERLEVEL9K_ALWAYS_SHOW_USER=true
+POWERLEVEL9K_USER_ICON=""
+POWERLEVEL9K_USER_DEFAULT_FOREGROUND="black"
+POWERLEVEL9K_USER_DEFAULT_BACKGROUND="cyan"
+POWERLEVEL9K_OS_ICON_FOREGROUND="black"
+POWERLEVEL9K_OS_ICON_BACKGROUND="white"
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="black"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="magenta"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user context dir rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+zplug "Powerlevel9k/powerlevel9k", use:powerlevel9k.zsh-theme
 
 # Plugins
 zplug "arzzen/calc.plugin.zsh"
