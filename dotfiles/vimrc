@@ -34,6 +34,8 @@ set ruler                 " display cursor position
 set autoread              " reload changed files
 set mouse=a               " allow mouse
 
+set encoding=UTF-8        " UTF-8 as default encoding
+
 " Don't redraw while executing macros (good performance config)
 set lazyredraw 
 
@@ -117,6 +119,7 @@ Plug 'sunaku/vim-shortcut'
 Plug 'colepeters/spacemacs-theme.vim'
 Plug 'mileszs/ack.vim'
 Plug 'ktonga/vim-follow-my-lead'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -141,7 +144,7 @@ let g:airline_theme='wombat'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_skip_empty_sections = 1
-set guifont=Fira\ Code:h12
+set guifont=FiraCode\ Nerd\ Font:h12
 let g:airline_mode_map = {
     \ '__' : '-',
     \ 'n'  : 'N',
