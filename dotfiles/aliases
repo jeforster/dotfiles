@@ -51,12 +51,12 @@ alias po='popd'
 ###############################################################################
 # Normalize `open` across Linux, macOS, and Windows.
 if [[ `uname` == 'Linux' ]]; then
-	if grep -q Microsoft /proc/version; then
-		# Ubuntu on Windows using WSL
-		alias open='explorer.exe';
-	else
-		alias open='xdg-open';
-	fi
+  if grep -q Microsoft /proc/version; then
+    # Ubuntu on Windows using WSL
+    alias open='explorer.exe';
+  else
+    alias open='xdg-open';
+  fi
 fi
 
 
