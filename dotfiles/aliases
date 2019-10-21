@@ -36,6 +36,10 @@ alias e=emacs
 alias g=git
 
 # ls
+if command -v lsd >/dev/null 2>&1; then
+  alias ls='lsd'
+  alias lt='ls --tree'
+fi
 alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'
