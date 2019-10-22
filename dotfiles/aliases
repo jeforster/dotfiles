@@ -49,6 +49,11 @@ alias la='ls -lAh'
 alias pu='pushd'
 alias po='popd'
 
+# Colorful cat
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat -pp'
+fi
+
 
 ###############################################################################
 # Linux Specific Aliases
