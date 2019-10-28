@@ -1,96 +1,96 @@
 [core]
-    excludesfile = ~/.gitignore
-    editor = vim
-    precomposeUnicode = true
+  excludesfile = ~/.gitignore
+  editor = vim
+  precomposeUnicode = true
 
 [alias]
-    a = add
-    aa = add --all
-    b = branch
-    bd = branch --delete
-    bm = branch --move
-    ba = branch --all
-    bc = rev-parse --abbrev-ref HEAD
-    co = checkout
-    cob = checkout -b
-    com = checkout master
-    cl = clone
-    ci = commit
-    cim = commit -m
-    ciam = commit -am
-    d = diff
-    dc = diff --cached
-    f = fetch
-    fa = fetch --all --prune
-    fo = fetch origin
-    ls = ls-files
-    lg = log --color --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all
-    m = merge
-    ma = merge --abort
-    mc = merge --continue
-    ms = merge --skip
-    mm = merge master
-    ps = push
-    pso = push origin
-    psoh = push origin HEAD
-    pl = pull
-    rb = rebase
-    rba = rebase --abort
-    rbc = rebase --continue
-    rbi = rebase --interactive
-    rbs = rebase --skip
-    rbm = rebase master
-    re = reset
-    reh = reset --hard
-    rem = reset --mixed
-    res = reset --soft
-    rehh = reset --hard HEAD
-    remh = reset --mixed HEAD
-    resh = reset --soft HEAD
-    rehom = reset --hard origin/master
-    st = status
-    stall = stash -all
-    t = tag
-    aliases = !git config -l | grep alias | cut -c 7-
+  a = add
+  aa = add --all
+  b = branch
+  bd = branch --delete
+  bm = branch --move
+  ba = branch --all
+  bc = rev-parse --abbrev-ref HEAD
+  co = checkout
+  cob = checkout -b
+  com = checkout master
+  cl = clone
+  ci = commit
+  cim = commit -m
+  ciam = commit -am
+  d = diff
+  dc = diff --cached
+  f = fetch
+  fa = fetch --all --prune
+  fo = fetch origin
+  ls = ls-files
+  lg = log --color --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all
+  m = merge
+  ma = merge --abort
+  mc = merge --continue
+  ms = merge --skip
+  mm = merge master
+  ps = push
+  pso = push origin
+  psoh = push origin HEAD
+  pl = pull
+  rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = rebase --interactive
+  rbs = rebase --skip
+  rbm = rebase master
+  re = reset
+  reh = reset --hard
+  rem = reset --mixed
+  res = reset --soft
+  rehh = reset --hard HEAD
+  remh = reset --mixed HEAD
+  resh = reset --soft HEAD
+  rehom = reset --hard origin/master
+  st = status
+  stall = stash -all
+  t = tag
+  aliases = !git config -l | grep alias | cut -c 7-
 
 [help]
-    autocorrect = 1
+  autocorrect = 1
 
 [apply]
-    whitespace = fix
+  whitespace = fix
 
 [color]
-    ui = auto
+  ui = auto
 
 [pager]
-    diff = diff-so-fancy | less --tabs=4 -RFX
-    show = diff-so-fancy | less --tabs=4 -RFX
+  diff = diff-so-fancy | less --tabs=4 -RFX
+  show = diff-so-fancy | less --tabs=4 -RFX
 
 [color "diff"]
-    meta = yellow bold
-    commit = green bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-    newMoved = cyan
-    oldMoved = blue
+  meta = yellow bold
+  commit = green bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+  newMoved = cyan
+  oldMoved = blue
 
 [color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = "red bold 52"
-    newNormal = "green bold"
-    newHighlight = "green bold 22"
+  oldNormal = red bold
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
 
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
-    
+  added = yellow
+  changed = green
+  untracked = cyan
+
 [include]
-    path = ~/.gitconfig.local
+  path = ~/.gitconfig.local

@@ -1,7 +1,6 @@
 ###############################################################################
 # General
 ###############################################################################
-
 # Create a directory and cd into it
 function mkcd() {
   if [ "$#" -ne 1 ]; then
@@ -9,7 +8,7 @@ function mkcd() {
     return 1
   fi
 
-  if [ ! -d "$1" ]; then 
+  if [ ! -d "$1" ]; then
     mkdir -p "$1"
   fi
 
@@ -21,8 +20,7 @@ function mkcd() {
 # Mac Specific Functions
 ###############################################################################
 if [[ `uname` == 'Darwin' ]]; then
-
-  # Update homebrew 
+  # Update homebrew
   brewup() {
     brew update
     brew upgrade
@@ -37,11 +35,11 @@ if [[ `uname` == 'Darwin' ]]; then
 
   # Empty the Trash
   emptytrash() {
-    sudo rm -rfv /Volumes/*/.Trashes 
-    sudo rm -rfv ~/.Trash 
+    sudo rm -rfv /Volumes/*/.Trashes
+    sudo rm -rfv ~/.Trash
     sudo rm -rfv /private/var/log/asl/*.asl
   }
-  
+
 fi
 
 

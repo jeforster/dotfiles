@@ -1,7 +1,6 @@
 ###############################################################################
 # General Aliases
 ###############################################################################
-
 # cd
 alias ..="cd .."
 alias ...="cd ../.."
@@ -59,12 +58,12 @@ fi
 # Linux Specific Aliases
 ###############################################################################
 # Normalize `open` across Linux, macOS, and Windows.
-if [[ `uname` == 'Linux' ]]; then
+if [[ $(uname) == 'Linux' ]]; then
   if grep -q Microsoft /proc/version; then
     # Ubuntu on Windows using WSL
-    alias open='explorer.exe';
+    alias open='explorer.exe'
   else
-    alias open='xdg-open';
+    alias open='xdg-open'
   fi
 fi
 
@@ -72,9 +71,8 @@ fi
 ###############################################################################
 # Mac Specific Aliases
 ###############################################################################
-if [[ `uname` == 'Darwin' ]]; then
-
-  # Remove .DS_Store files 
+if [[ $(uname) == 'Darwin' ]]; then
+  # Remove .DS_Store files
   alias dscleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
   # Show/hide hidden files in Finder
@@ -85,10 +83,10 @@ if [[ `uname` == 'Darwin' ]]; then
   alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
   # macOS has no `md5sum`, so use `md5` as a fallback
-  command -v md5sum > /dev/null || alias md5sum="md5"
+  command -v md5sum >/dev/null || alias md5sum="md5"
 
   # macOS has no `sha1sum`, so use `shasum` as a fallback
-  command -v sha1sum > /dev/null || alias sha1sum="shasum"
+  command -v sha1sum >/dev/null || alias sha1sum="shasum"
 fi
 
 # local config
