@@ -19,7 +19,7 @@ fi
 # Essential
 source ~/.zplug/init.zsh
 
-# Theme
+# Powerlevel9k Theme Settings
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_CONTEXT_TEMPLATE="\uF108 %m"
 POWERLEVEL9K_ALWAYS_SHOW_USER=true
@@ -34,9 +34,6 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user context dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 zplug "Powerlevel9k/powerlevel9k", use:powerlevel9k.zsh-theme
 
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
 # Plugins
 zplug "ael-code/zsh-colored-man-pages"
 zplug "amstrad/oh-my-matrix"
@@ -46,22 +43,18 @@ zplug "gko/ssh-connect"
 zplug "RobertAudi/tsm"
 zplug "Tarrasch/zsh-bd"
 zplug "zdharma/fast-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
 
 # Oh-My-Zsh Plugins
-zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/web-search", from:oh-my-zsh
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 
-# Zsh-Users Plugins
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-apple-touchbar"
-
 # Mac Specific Plugins
 if [[ $(uname) == 'Darwin' ]]; then
-  zplug "plugins/brew", from:oh-my-zsh
   zplug "plugins/osx", from:oh-my-zsh
+  zplug "zsh-users/zsh-apple-touchbar"
 fi
 
 # Install packages that have not been installed yet
@@ -80,6 +73,11 @@ zplug load
 # Ctrl-p/Ctrl-n searches history of what has already been typed
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
+
+# History
+HISTFILE=~/.zsh_history
+SAVEHIST=100000
+SAVEHIST=$HISTSIZE
 
 
 ###############################################################################
