@@ -23,8 +23,15 @@
   f = fetch
   fa = fetch --all --prune
   fo = fetch origin
+  i = init
   ls = ls-files
-  lg = log --color --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all
+  log = log
+  logs = log --stat
+  logg = log --graph --decorate
+  logo = log --graph --decorate --oneline
+  lg = log --color --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  lga = log --color --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all
+  lgs = log --color --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat
   m = merge
   ma = merge --abort
   mc = merge --continue
@@ -34,6 +41,13 @@
   pso = push origin
   psoh = push origin HEAD
   pl = pull
+  r = remote
+  ra = remote add
+  rmv = remote rename
+  rrm = remote remove
+  rgu = remote get-url
+  rsu = remote set-url
+  rv = remote -v
   rb = rebase
   rba = rebase --abort
   rbc = rebase --continue
