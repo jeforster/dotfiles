@@ -32,7 +32,9 @@ POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="black"
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="magenta"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user context dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
-zplug "Powerlevel9k/powerlevel9k", use:powerlevel9k.zsh-theme
+
+#zplug "Powerlevel9k/powerlevel9k", use:powerlevel9k.zsh-theme
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # Plugins
 zplug "ael-code/zsh-colored-man-pages"
