@@ -78,8 +78,9 @@ export THEME_CHECK_SUDO=false
 
 # Theme settings
 export BASH_IT_THEME='powerline'
-export POWERLINE_PROMPT='myuser myhost mycwd scm' # With Nerd Fonts
+export POWERLINE_PROMPT='mysystem myuser myhost mycwd scm' # With Nerd Fonts
 #export POWERLINE_PROMPT='user_info hostname cwd scm' # Without Nerd Fonts
+SYSTEM_THEME_PROMPT_COLOR=${POWERLINE_SYSTEM_COLOR:=8}
 USER_INFO_THEME_PROMPT_COLOR=${POWERLINE_USER_INFO_COLOR:=6}
 HOST_THEME_PROMPT_COLOR=${POWERLINE_HOST_COLOR:=5}
 CWD_THEME_PROMPT_COLOR=${POWERLINE_CWD_COLOR:=4}
@@ -89,15 +90,31 @@ SCM_THEME_PROMPT_STAGED_COLOR=${POWERLINE_SCM_STAGED_COLOR:=3}
 SCM_THEME_PROMPT_UNSTAGED_COLOR=${POWERLINE_SCM_UNSTAGED_COLOR:=1}
 SCM_THEME_PROMPT_COLOR=${SCM_THEME_PROMPT_CLEAN_COLOR}
 
-# Custom powerline segments to include nerd font icons
+# Custom powerline segments to include nerdfont icons
+function __powerline_mysystem_prompt() {
+  local system_icon="?"
+  local system_name=`uname`
+
+  if [[ $system_name == 'Linux' ]]; then
+    system_icon=""
+  elif [[ $system_name == 'Darwin' ]]; then
+    system_icon=""
+  fi  
+
+  echo "${system_icon}|${SYSTEM_THEME_PROMPT_COLOR}"
+}
+
 function __powerline_myuser_prompt() {
-	echo " ${USER}|${USER_INFO_THEME_PROMPT_COLOR}"
+  echo " ${USER}|${USER_INFO_THEME_PROMPT_COLOR}"
 }
+
 function __powerline_myhost_prompt() {
-	echo " $(hostname -s)|${HOST_THEME_PROMPT_COLOR}"
+  echo " $(hostname -s)|${HOST_THEME_PROMPT_COLOR}"
 }
+
 function __powerline_mycwd_prompt() {
-	echo " $(pwd | sed "s|^${HOME}|~|")|${CWD_THEME_PROMPT_COLOR}"
+  local cwd="$(pwd | sed "s|^${HOME}|~|")"
+  echo " ${cwd}|${CWD_THEME_PROMPT_COLOR}"
 }
 
 # Load Bash It
