@@ -85,5 +85,9 @@
 [interactive]
   diffFilter = delta --color-only --features=interactive
 
+[delta]
+  line-numbers = true
+  side-by-side = true
+
 [include]
   path = ~/.gitconfig.local
