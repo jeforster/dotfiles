@@ -14,6 +14,7 @@
   co = checkout
   cob = checkout -b
   com = checkout master
+  cot = checkout --track
   cl = clone
   ci = commit
   cim = commit -m
@@ -25,7 +26,6 @@
   fo = fetch origin
   i = init
   ls = ls-files
-  log = log
   logs = log --stat
   logg = log --graph --decorate
   logo = log --graph --decorate --oneline
@@ -77,34 +77,13 @@
   ui = auto
 
 [pager]
-  diff = diff-so-fancy | less --tabs=4 -RFX
-  show = diff-so-fancy | less --tabs=4 -RFX
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
 
-[color "diff"]
-  meta = yellow bold
-  commit = green bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
-  newMoved = cyan
-  oldMoved = blue
-
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = "red bold 52"
-  newNormal = "green bold"
-  newHighlight = "green bold 22"
-
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+[interactive]
+  diffFilter = delta --color-only --features=interactive
 
 [include]
   path = ~/.gitconfig.local
