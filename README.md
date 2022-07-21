@@ -4,32 +4,47 @@
 
 **Note:** I would recommend forking this repository and updating my dotfiles or replacing them with your own.
 
-Clone and open the repository:
+### Mac/Linux
+
+Open a terminal window, and use the below commands to clone and open the repository:
 
 ```bash
 git clone https://github.com/jeforster/dotfiles.git
 cd dotfiles
 ```
 
-Install the dotfiles:
+Then, install the dotfiles with:
 
 ```bash
 ./install.sh
 ```
 
-This will backup existing dotfiles into a `backups` folder and create symlinks for all files in the `dotfiles` folder.  
+### Windows
+
+Open a powershell window, and use the below commands to clone and open the repository:
+
+```
+git clone https://github.com/jeforster/dotfiles.git
+Set-Location dotfiles
+```
+
+Install the dotfiles with:
+
+```
+.\install.ps1
+```
+
+This will backup existing dotfiles into a `backups` folder and install all files in the `dotfiles` folder.  
 
 ## Update
 
-If you need to update existing dotfiles, just pull this repository and the changes should take effect automatically.
+If you need to update existing dotfiles, just pull this repository and the changes should take effect automatically on Mac/Linux.  Windows will require you to re-run the install script.
 
-If you want to pull or add a new file, add it to the dotfiles folder and re-run the `install.sh` script.
+If you want to pull or add a new file, add it to the dotfiles folder and re-run the install script.
 
 ## Customizations
 
-Use `~/.path` to expand your `$PATH` environment variable.  To add general configurations that you don't want to commit put them into `~/.extras`.  
-
-You can also overwrite any settings and put specific local configs in:
+You can overwrite any settings and put specific local configs in:
 
 * `~/.aliases.local`
 * `~/.bash_profile.local`
