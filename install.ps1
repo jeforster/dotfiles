@@ -21,7 +21,7 @@ Foreach($file in Get-ChildItem $DotfileDir)
     # Backup current dotfile if it exists
     If (Test-Path -Path "${dotfileFullName}")
     {
-        Move-Item "$dotfileFullName" -Destination (Join-Path -Path "${BackupDir}" -ChildPath "${fileName}")
+        Move-Item "${dotfileFullName}" -Destination (Join-Path -Path "${BackupDir}" -ChildPath "${fileName}")
     }
 
     # Install the dotfile
@@ -38,7 +38,7 @@ Foreach($file in Get-ChildItem $WindowsDotfileDir)
     # Backup current dotfile if it exists
     If (Test-Path -Path "${dotfileFullName}")
     {
-        Move-Item "$dotfileFullName" -Destination (Join-Path -Path "${BackupDir}" -ChildPath "windows\${fileName}")
+        Move-Item "${dotfileFullName}" -Destination (Join-Path -Path "${BackupDir}" -ChildPath "windows\${fileName}")
     }
 
     # Install the dotfile
