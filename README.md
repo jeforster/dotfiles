@@ -42,6 +42,11 @@ If you need to update existing dotfiles, just pull this repository and the chang
 
 If you want to pull or add a new file, add it to the dotfiles folder and re-run the install script.
 
+## Notes
+
+* Windows specific dotfiles should be places inside the `windows` directory instead of the standard `dotfiles` directory.
+* The profile for PowerShell should be placed inside `powershell\profile.ps1`.  This file is installed for both PowerShell [Core] (`pwsh.exe`) and Windows Powershell (`powershell.exe`).
+
 ## Customizations
 
 You can overwrite any settings and put specific local configs in:
