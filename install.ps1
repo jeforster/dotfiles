@@ -9,7 +9,7 @@ $PowerShellProfile = Join-Path -Path "${MyDocumentsDir}" -ChildPath "WindowsPowe
 $PwshProfile = Join-Path -Path "${MyDocumentsDir}" -ChildPath "PowerShell\profile.ps1"
 
 # Create a backup directory
-[System.IO.Directory]::CreateDirectory(${BackupDir})
+[System.IO.Directory]::CreateDirectory(${BackupDir}) | Out-Null
 
 # Loop through each primary dotfile
 Foreach($file in Get-ChildItem $DotfileDir)
@@ -27,6 +27,9 @@ Foreach($file in Get-ChildItem $DotfileDir)
     # Install the dotfile
     Copy-Item "${fileFullName}" -Destination "${dotfileFullName}" -Recurse
 }
+
+# Create backup directory for windows specific dotfiles
+[System.IO.Directory]::CreateDirectory((Join-Path -Path "${BackupDir}" -ChildPath "windows")) | Out-Null
 
 # Loop through each Windows specific dotfile
 Foreach($file in Get-ChildItem $WindowsDotfileDir)
