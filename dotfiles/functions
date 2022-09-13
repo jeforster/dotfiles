@@ -19,7 +19,7 @@ function mkcd() {
 ###############################################################################
 # Mac Specific Functions
 ###############################################################################
-if [[ `uname` == 'Darwin' ]]; then
+if [[ `uname` == "Darwin" ]]; then
   # Update homebrew
   brewup() {
     brew update
