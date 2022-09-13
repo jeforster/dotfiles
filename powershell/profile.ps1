@@ -31,6 +31,12 @@ Set-Alias v vim
 Set-Alias which get-command
 Set-Alias grep findstr
 
+# ls aliases
+function global:ls() { Get-ChildItem | Format-Wide }
+function global:lsa() { Get-ChildItem -Force | Format-Wide }
+function global:lsl() { Get-ChildItem }
+function global:lsla() { Get-ChildItem -Force }
+
 # Easy movement
 function global:..() { Set-Location .. }
 function global:...() { Set-Location ..\.. }
@@ -38,7 +44,7 @@ function global:....() { Set-Location ..\..\.. }
 function global:.....() { Set-Location ..\..\..\.. }
 function global:......() { Set-Location ..\..\..\..\.. }
 
-# Git Aliases
+# Git aliases
 function global:ga() { git add $args }
 function global:gaa() { git add --all $args }
 function global:gb() { git branch $args }

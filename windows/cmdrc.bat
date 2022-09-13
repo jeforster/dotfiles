@@ -24,7 +24,6 @@ DOSKEY diff=fc
 DOSKEY env=set
 DOSKEY grep=find
 DOSKEY less=more
-DOSKEY ls=dir /B
 DOSKEY man=help
 DOSKEY mkdir=md
 DOSKEY mv=move
@@ -34,6 +33,12 @@ DOSKEY rm=del
 DOSKEY top=mem
 DOSKEY wget=bitsadmin
 DOSKEY which=where
+
+:: ls aliases
+DOSKEY ls=dir /b
+DOSKEY lsa=dir /b /a
+DOSKEY lsl=dir
+DOSKEY lsla=dir /a
 
 :: Git aliases
 DOSKEY g=git

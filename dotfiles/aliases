@@ -100,12 +100,11 @@ alias galiases='git config -l | grep alias | cut -c 7-'
 # ls
 if command -v lsd >/dev/null 2>&1; then
   alias ls='lsd'
-  alias lt='ls --tree'
+  alias lt='lsd --tree'
 fi
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
+alias lsa='ls -a'
+alias lsl='ls -lh'
+alias lsla='lsla -lah'
 
 # Push and pop directories
 alias pu='pushd'
