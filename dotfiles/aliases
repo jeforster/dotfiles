@@ -10,21 +10,21 @@ alias ......="cd ../../../../.."
 
 alias ~="cd ~"
 
-alias -- -='cd -'
-alias 1='cd -'
-alias 2='cd -2'
-alias 3='cd -3'
-alias 4='cd -4'
-alias 5='cd -5'
-alias 6='cd -6'
-alias 7='cd -7'
-alias 8='cd -8'
-alias 9='cd -9'
+alias -- -="cd -"
+alias 1="cd -"
+alias 2="cd -2"
+alias 3="cd -3"
+alias 4="cd -4"
+alias 5="cd -5"
+alias 6="cd -6"
+alias 7="cd -7"
+alias 8="cd -8"
+alias 9="cd -9"
 
 # Directory
-alias md='mkdir -p'
+alias md="mkdir -p"
 alias rd=rmdir
-alias d='dirs -v | head -10'
+alias d="dirs -v | head -10"
 
 # Editors
 alias vi=vim
@@ -33,86 +33,86 @@ alias e=emacs
 
 # git
 alias g=git
-alias ga='git add'
-alias gaa='git add --all'
-alias gb='git branch'
-alias gbd='git branch --delete'
-alias gbm='git branch --move'
-alias gba='git branch --all'
-alias gbc='git rev-parse --abbrev-ref HEAD'
-alias gco='git checkout'
-alias gcob='git checkout -b'
-alias gcom='git checkout master'
-alias gcot='git checkout --track'
-alias gcl='git clone'
-alias gci='git commit'
-alias gcim='git commit -m'
-alias gciam='git commit -am'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gf='git fetch'
-alias gfa='git fetch --all --prune'
-alias gfo='git fetch origin'
-alias gi='git init'
-alias gls='git ls-files'
-alias glog='git log'
-alias glogs='git log --stat'
-alias glogg='git log --graph --decorate'
-alias glogo='git log --graph --decorate --oneline'
-alias glg='git log --color --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
-alias glga='git log --color --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all'
-alias glgs='git log --color --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --stat'
-alias gm='git merge'
-alias gma='git merge --abort'
-alias gmc='git merge --continue'
-alias gms='git merge --skip'
-alias gmm='git merge master'
-alias gps='git push'
-alias gpso='git push origin'
-alias gpsoh='git push origin HEAD'
-alias gpl='git pull'
-alias gr='git remote'
-alias gra='git remote add'
-alias grmv='git remote rename'
-alias grrm='git remote remove'
-alias grgu='git remote get-url'
-alias grsu='git remote set-url'
-alias grv='git remote -v'
-alias grb='git rebase'
-alias grba='git rebase --abort'
-alias grbc='git rebase --continue'
-alias grbi='git rebase --interactive'
-alias grbs='git rebase --skip'
-alias grbm='git rebase master'
-alias gre='git reset'
-alias greh='git reset --hard'
-alias grem='git reset --mixed'
-alias gres='git reset --soft'
-alias grehh='git reset --hard HEAD'
-alias gremh='git reset --mixed HEAD'
-alias gresh='git reset --soft HEAD'
-alias grehom='git reset --hard origin/master'
-alias gst='git status'
-alias gstall='git stash -all'
-alias gt='git tag'
-alias galiases='git config -l | grep alias | cut -c 7-'
+alias ga="git add"
+alias gaa="git add --all"
+alias gb="git branch"
+alias gbd="git branch --delete"
+alias gbm="git branch --move"
+alias gba="git branch --all"
+alias gbc="git rev-parse --abbrev-ref HEAD"
+alias gco="git checkout"
+alias gcob="git checkout -b"
+alias gcom="git checkout master"
+alias gcot="git checkout --track"
+alias gcl="git clone"
+alias gci="git commit"
+alias gcim="git commit -m"
+alias gciam="git commit -am"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gf="git fetch"
+alias gfa="git fetch --all --prune"
+alias gfo="git fetch origin"
+alias gi="git init"
+alias gls="git ls-files"
+alias glog="git log"
+alias glogs="git log --stat"
+alias glogg="git log --graph --decorate"
+alias glogo="git log --graph --decorate --oneline"
+alias glg="git log --color --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias glga="git log --color --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
+alias glgs="git log --color --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
+alias gm="git merge"
+alias gma="git merge --abort"
+alias gmc="git merge --continue"
+alias gms="git merge --skip"
+alias gmm="git merge master"
+alias gps="git push"
+alias gpso="git push origin"
+alias gpsoh="git push origin HEAD"
+alias gpl="git pull"
+alias gr="git remote"
+alias gra="git remote add"
+alias grmv="git remote rename"
+alias grrm="git remote remove"
+alias grgu="git remote get-url"
+alias grsu="git remote set-url"
+alias grv="git remote -v"
+alias grb="git rebase"
+alias grba="git rebase --abort"
+alias grbc="git rebase --continue"
+alias grbi="git rebase --interactive"
+alias grbs="git rebase --skip"
+alias grbm="git rebase master"
+alias gre="git reset"
+alias greh="git reset --hard"
+alias grem="git reset --mixed"
+alias gres="git reset --soft"
+alias grehh="git reset --hard HEAD"
+alias gremh="git reset --mixed HEAD"
+alias gresh="git reset --soft HEAD"
+alias grehom="git reset --hard origin/master"
+alias gst="git status"
+alias gstall="git stash -all"
+alias gt="git tag"
+alias galiases="git config -l | grep alias | cut -c 7-"
 
 # ls
 if command -v lsd >/dev/null 2>&1; then
-  alias ls='lsd'
-  alias lt='lsd --tree'
+  alias ls="lsd"
+  alias lt="lsd --tree"
 fi
-alias lsa='ls -a'
-alias lsl='ls -lh'
-alias lsla='lsla -lah'
+alias lsa="ls -a"
+alias lsl="ls -lh"
+alias lsla="lsla -lah"
 
 # Push and pop directories
-alias pu='pushd'
-alias po='popd'
+alias pu="pushd"
+alias po="popd"
 
 # Colorful cat
 if command -v bat >/dev/null 2>&1; then
-  alias cat='bat -pp'
+  alias cat="bat -pp"
 fi
 
 
@@ -120,12 +120,12 @@ fi
 # Linux Specific Aliases
 ###############################################################################
 # Normalize `open` across Linux, macOS, and Windows.
-if [[ $(uname) == 'Linux' ]]; then
+if [[ $(uname) == "Linux" ]]; then
   if grep -q Microsoft /proc/version; then
     # Ubuntu on Windows using WSL
-    alias open='explorer.exe'
+    alias open="explorer.exe"
   else
-    alias open='xdg-open'
+    alias open="xdg-open"
   fi
 fi
 
@@ -133,7 +133,7 @@ fi
 ###############################################################################
 # Mac Specific Aliases
 ###############################################################################
-if [[ $(uname) == 'Darwin' ]]; then
+if [[ $(uname) == "Darwin" ]]; then
   # Remove .DS_Store files
   alias dscleanup="find . -type f -name '*.DS_Store' -ls -delete"
 

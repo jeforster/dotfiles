@@ -77,9 +77,9 @@ export SCM_CHECK=true
 export THEME_CHECK_SUDO=false
 
 # Theme settings
-export BASH_IT_THEME='powerline'
-export POWERLINE_PROMPT='mysystem myuser myhost mycwd scm' # With Nerd Fonts
-#export POWERLINE_PROMPT='user_info hostname cwd scm' # Without Nerd Fonts
+export BASH_IT_THEME="powerline"
+export POWERLINE_PROMPT="mysystem myuser myhost mycwd scm" # With Nerd Fonts
+#export POWERLINE_PROMPT="user_info hostname cwd scm" # Without Nerd Fonts
 SYSTEM_THEME_PROMPT_COLOR=${POWERLINE_SYSTEM_COLOR:=8}
 USER_INFO_THEME_PROMPT_COLOR=${POWERLINE_USER_INFO_COLOR:=6}
 HOST_THEME_PROMPT_COLOR=${POWERLINE_HOST_COLOR:=5}
@@ -95,9 +95,9 @@ function __powerline_mysystem_prompt() {
   local system_icon="?"
   local system_name=`uname`
 
-  if [[ $system_name == 'Linux' ]]; then
+  if [[ $system_name == "Linux" ]]; then
     system_icon=""
-  elif [[ $system_name == 'Darwin' ]]; then
+  elif [[ $system_name == "Darwin" ]]; then
     system_icon=""
   fi  
 

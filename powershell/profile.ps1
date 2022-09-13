@@ -70,9 +70,9 @@ function global:glog() { git log $args }
 function global:glogs() { git log --stat $args }
 function global:glogg() { git log --graph --decorate $args }
 function global:glogo() { git log --graph --decorate --oneline $args }
-function global:glg() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit $args }
-function global:glga() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all $args }
-function global:glgs() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat $args }
+function global:glg() { git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit $args }
+function global:glga() { git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --all $args }
+function global:glgs() { git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --stat $args }
 function global:gm() { git merge $args }
 function global:gma() { git merge --abort $args }
 function global:gmc() { git merge --continue $args }
