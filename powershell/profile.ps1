@@ -32,7 +32,7 @@ Set-Alias which get-command
 Set-Alias grep findstr
 
 # ls aliases
-Remove-Alias -AliasName ls
+Remove-Alias -Name ls
 function global:ls() { Get-ChildItem @args | Format-Wide }
 function global:lsa() { Get-ChildItem -Force @args | Format-Wide }
 function global:lsl() { Get-ChildItem @args }
