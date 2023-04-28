@@ -16,7 +16,9 @@ if (!(Get-Command "oh-my-posh" -errorAction SilentlyContinue))
     Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString("https://ohmyposh.dev/install.ps1"))
     (Get-Command oh-my-posh).Source
 }
-oh-my-posh init pwsh --config "${HOME}\.oh-my-posh\themes\el_jefe.omp.json" | Invoke-Expression
+$themes = @("el_jefe", "bubbles")
+$theme = $themes | Get-Random
+oh-my-posh init pwsh --config "${HOME}\.oh-my-posh\themes\${theme}.omp.json" | Invoke-Expression
 
 # PSReadline setup
 Set-PSReadLineOption -PredictionSource History
