@@ -57,7 +57,7 @@ function global:gba() { git branch --all @args }
 function global:gbc() { git rev-parse --abbrev-ref HEAD @args }
 function global:gco() { git checkout @args }
 function global:gcob() { git checkout -b @args }
-function global:gcom() { git checkout master @args }
+function global:gcom() { git checkout main @args }
 function global:gcl() { git clone @args }
 function global:gci() { git commit @args }
 function global:gcim() { git commit -m @args }
@@ -80,7 +80,7 @@ function global:gm() { git merge @args }
 function global:gma() { git merge --abort @args }
 function global:gmc() { git merge --continue @args }
 function global:gms() { git merge --skip @args }
-function global:gmm() { git merge master @args }
+function global:gmm() { git merge main @args }
 function global:gps() { git push @args }
 function global:gpso() { git push origin @args }
 function global:gpsoh() { git push origin HEAD @args }
@@ -97,7 +97,7 @@ function global:grba() { git rebase --abort @args }
 function global:grbc() { git rebase --continue @args }
 function global:grbi() { git rebase --interactive @args }
 function global:grbs() { git rebase --skip @args }
-function global:grbm() { git rebase master @args }
+function global:grbm() { git rebase main @args }
 function global:gre() { git reset @args }
 function global:greh() { git reset --hard @args }
 function global:grem() { git reset --mixed @args }
@@ -105,7 +105,7 @@ function global:gres() { git reset --soft @args }
 function global:grehh() { git reset --hard HEAD @args }
 function global:gremh() { git reset --mixed HEAD @args }
 function global:gresh() { git reset --soft HEAD @args }
-function global:grehom() { git reset --hard origin/master @args }
+function global:grehom() { git reset --hard origin/main @args }
 function global:gst() { git status @args }
 function global:gstall() { git stash -all @args }
 function global:gt() { git tag @args }

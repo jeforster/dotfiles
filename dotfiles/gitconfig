@@ -13,7 +13,7 @@
   bc = rev-parse --abbrev-ref HEAD
   co = checkout
   cob = checkout -b
-  com = checkout master
+  com = checkout main
   cot = checkout --track
   cl = clone
   ci = commit
@@ -36,7 +36,7 @@
   ma = merge --abort
   mc = merge --continue
   ms = merge --skip
-  mm = merge master
+  mm = merge main
   ps = push
   pso = push origin
   psoh = push origin HEAD
@@ -53,7 +53,7 @@
   rbc = rebase --continue
   rbi = rebase --interactive
   rbs = rebase --skip
-  rbm = rebase master
+  rbm = rebase main
   re = reset
   reh = reset --hard
   rem = reset --mixed
@@ -61,7 +61,7 @@
   rehh = reset --hard HEAD
   remh = reset --mixed HEAD
   resh = reset --soft HEAD
-  rehom = reset --hard origin/master
+  rehom = reset --hard origin/main
   st = status
   stall = stash -all
   t = tag
