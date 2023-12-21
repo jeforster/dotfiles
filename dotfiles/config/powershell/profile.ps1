@@ -1,8 +1,27 @@
+# Platform specific config
+if ($IsWindows)
+{
+    . "${HOME}\.config\powershell\platforms\windows.ps1"
+}
+elseif ($IsMacOS)
+{
+    . "${HOME}\.config\powershell\platforms\macos.ps1"
+}
+elseif ($IsLinux)
+{
+    . "${HOME}\.config\powershell\platforms\linux.ps1"
+}
+
 # Install modules
 if (!(Get-Module -ListAvailable -Name Terminal-Icons)) {
     Install-Module -Name Terminal-Icons -Repository PSGallery -Force
 }
-if (!(Get-Module -ListAvailable -Name PSReadLine)) {
+if (Get-Module -ListAvailable -Name PSReadLine) {
+    $currentVersion = (Get-Module -ListAvailable -Name PSReadLine).Version
+    if ($currentVersion -lt [Version]"2.2.6") {
+        Update-Module -Name PSReadLine  -AllowPrerelease -Force
+    }
+} else {
     Install-Module -Name PSReadLine -AllowPrerelease -Force
 }
 
@@ -10,32 +29,16 @@ if (!(Get-Module -ListAvailable -Name PSReadLine)) {
 Import-Module -Name Terminal-Icons
 Import-Module -Name PSReadLine
 
-# Oh-my-posh install & setup
-if ($IsMacOS -Or $IsLinux)
-{
-    $env:PATH += ':/opt/homebrew/bin'
-}
-if (!(Get-Command "oh-my-posh" -errorAction SilentlyContinue))
-{
-    if ($IsWindows)
-    {
-        Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString("https://ohmyposh.dev/install.ps1"))
-        (Get-Command oh-my-posh).Source
-    }
-    elseif ($IsMacOS -Or $IsLinux)
-    {
-        brew install jandedobbeleer/oh-my-posh/oh-my-posh
-    }
-}
-$themes = @("el_jefe", "bubbles")
-$theme = $themes | Get-Random
-oh-my-posh init pwsh --config "${HOME}\.config\powershell\themes\${theme}.omp.json" | Invoke-Expression
-
 # PSReadline setup
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle InlineView
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+# Theme
+$themes = @("el_jefe", "bubbles")
+$theme = $themes | Get-Random
+oh-my-posh init pwsh --config "${HOME}\.config\powershell\themes\${theme}.omp.json" | Invoke-Expression
 
 # Aliases
 Set-Alias e emacs
