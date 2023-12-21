@@ -20,8 +20,8 @@ fi
 source ~/.zplug/init.zsh
 
 # Theme Settings
-if [[ -d ~/.zsh/themes/ ]]; then
-  themes=(~/.zsh/themes/*)
+if [[ -d ~/.config/zsh/themes/ ]]; then
+  themes=(~/.config/zsh/themes/*)
   source "$themes[RANDOM % $#themes + 1]" # Select a random theme
 else
   zplug "romkatv/powerlevel10k", as:theme, depth:1
