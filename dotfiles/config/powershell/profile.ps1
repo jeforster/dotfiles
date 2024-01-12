@@ -19,10 +19,10 @@ if (!(Get-Module -ListAvailable -Name Terminal-Icons)) {
 if (Get-Module -ListAvailable -Name PSReadLine) {
     $currentVersion = (Get-Module -ListAvailable -Name PSReadLine).Version
     if ($currentVersion -lt [Version]"2.2.6") {
-        Update-Module -Name PSReadLine  -AllowPrerelease -Force
+        Update-Module -Name PSReadLine -Force
     }
 } else {
-    Install-Module -Name PSReadLine -AllowPrerelease -Force
+    Install-Module -Name PSReadLine -Force -MinimumVersion "2.2.6"
 }
 
 # Import modules
