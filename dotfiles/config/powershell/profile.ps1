@@ -68,14 +68,13 @@ function global:gb() { git branch @args }
 function global:gbd() { git branch --delete @args }
 function global:gbm() { git branch --move @args }
 function global:gba() { git branch --all @args }
-function global:gbc() { git rev-parse --abbrev-ref HEAD @args }
 function global:gco() { git checkout @args }
 function global:gcob() { git checkout -b @args }
 function global:gcom() { git checkout main @args }
 function global:gcl() { git clone @args }
 function global:gci() { git commit @args }
-function global:gcim() { git commit -m @args }
-function global:gciam() { git commit -am @args }
+function global:gcim() { git commit --message @args }
+function global:gciam() { git commit --all --message @args }
 function global:gd() { git diff @args }
 function global:gdc() { git diff --cached @args }
 function global:gf() { git fetch @args }
@@ -84,12 +83,14 @@ function global:gfo() { git fetch origin @args }
 function global:gi() { git init @args }
 function global:gls() { git ls-files @args }
 function global:glog() { git log @args }
-function global:glogs() { git log --stat @args }
-function global:glogg() { git log --graph --decorate @args }
-function global:glogo() { git log --graph --decorate --oneline @args }
-function global:glg() { git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit @args }
-function global:glga() { git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --all @args }
-function global:glgs() { git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --stat @args }
+function global:glg() { git log --color --graph --date=human @args }
+function global:glgo() { git log --color --graph --date=human --pretty=lo @args }
+function global:glgt() { git log --color --graph --date=human --pretty=lt @args }
+function global:glgf() { git log --color --graph --date=human --pretty=lf @args }
+function global:glga() { git log --color --graph --date=human --all @args }
+function global:glgao() { git log --color --graph --date=human --all --pretty=lo @args }
+function global:glgat() { git log --color --graph --date=human --all --pretty=lt @args }
+function global:glgaf() { git log --color --graph --date=human --all --pretty=lf @args }
 function global:gm() { git merge @args }
 function global:gma() { git merge --abort @args }
 function global:gmc() { git merge --continue @args }
@@ -105,13 +106,17 @@ function global:grmv() { git remote rename @args }
 function global:grrm() { git remote remove @args }
 function global:grgu() { git remote get-url @args }
 function global:grsu() { git remote set-url @args }
-function global:grv() { git remote -v @args }
+function global:grv() { git remote --verbose @args }
 function global:grb() { git rebase @args }
 function global:grba() { git rebase --abort @args }
 function global:grbc() { git rebase --continue @args }
 function global:grbi() { git rebase --interactive @args }
 function global:grbs() { git rebase --skip @args }
 function global:grbm() { git rebase main @args }
+function global:grl() { git reflog --pretty=rlf @args }
+function global:grlo() { git reflog --pretty=rlo @args }
+function global:grlt() { git reflog --pretty=rlt @args }
+function global:grlf() { git reflog --pretty=rlf @args }
 function global:gre() { git reset @args }
 function global:greh() { git reset --hard @args }
 function global:grem() { git reset --mixed @args }
@@ -121,6 +126,11 @@ function global:gremh() { git reset --mixed HEAD @args }
 function global:gresh() { git reset --soft HEAD @args }
 function global:grehom() { git reset --hard origin/main @args }
 function global:gst() { git status @args }
+function global:gsti() { git status --ignored @args }
+function global:gstu() { git status --untracked-files @args }
+function global:gstiu() { git status --ignored --untracked-files @args }
 function global:gstall() { git stash -all @args }
 function global:gt() { git tag @args }
 function global:galiases() { git config -l | findstr alias | ForEach-object { $_.SubString(6) }}
+function global:gnuke() { git reset --hard HEAD && git clean -fd }
+function global:gwhoami() { Write-Output "$(git config --get user.name) <$(git config --get user.email)>" }
