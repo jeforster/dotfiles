@@ -58,16 +58,16 @@
   ls = ls-files
 
   # log - current branch
-  lg = log --color --graph --date=human
-  lgo = log --color --graph --date=human --pretty=lo
-  lgt = log --color --graph --date=human --pretty=lt
-  lgf = log --color --graph --date=human --pretty=lf
+  lg = log --graph --date=human
+  lgo = log --graph --date=human --pretty=lo
+  lgt = log --graph --date=human --pretty=lt
+  lgf = log --graph --date=human --pretty=lf
 
   # log - all branches and tags
-  lga = log --color --graph --date=human --all
-  lgao = log --color --graph --date=human --all --pretty=lo
-  lgat = log --color --graph --date=human --all --pretty=lt
-  lgaf = log --color --graph --date=human --all --pretty=lf
+  lga = log --graph --date=human --all
+  lgao = log --graph --date=human --all --pretty=lo
+  lgat = log --graph --date=human --all --pretty=lt
+  lgaf = log --graph --date=human --all --pretty=lf
 
   # merge
   m = merge

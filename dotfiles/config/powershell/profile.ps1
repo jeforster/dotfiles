@@ -83,14 +83,14 @@ function global:gfo() { git fetch origin @args }
 function global:gi() { git init @args }
 function global:gls() { git ls-files @args }
 function global:glog() { git log @args }
-function global:glg() { git log --color --graph --date=human @args }
-function global:glgo() { git log --color --graph --date=human --pretty=lo @args }
-function global:glgt() { git log --color --graph --date=human --pretty=lt @args }
-function global:glgf() { git log --color --graph --date=human --pretty=lf @args }
-function global:glga() { git log --color --graph --date=human --all @args }
-function global:glgao() { git log --color --graph --date=human --all --pretty=lo @args }
-function global:glgat() { git log --color --graph --date=human --all --pretty=lt @args }
-function global:glgaf() { git log --color --graph --date=human --all --pretty=lf @args }
+function global:glg() { git log --graph --date=human @args }
+function global:glgo() { git log --graph --date=human --pretty=lo @args }
+function global:glgt() { git log --graph --date=human --pretty=lt @args }
+function global:glgf() { git log --graph --date=human --pretty=lf @args }
+function global:glga() { git log --graph --date=human --all @args }
+function global:glgao() { git log --graph --date=human --all --pretty=lo @args }
+function global:glgat() { git log --graph --date=human --all --pretty=lt @args }
+function global:glgaf() { git log --graph --date=human --all --pretty=lf @args }
 function global:gm() { git merge @args }
 function global:gma() { git merge --abort @args }
 function global:gmc() { git merge --continue @args }

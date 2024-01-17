@@ -48,14 +48,14 @@ DOSKEY gb=git branch
 DOSKEY gbd=git branch --delete
 DOSKEY gbm=git branch --move
 DOSKEY gba=git branch --all
-DOSKEY gbc=git rev-parse --abbrev-ref HEAD
 DOSKEY gco=git checkout
 DOSKEY gcob=git checkout -b
 DOSKEY gcom=git checkout main
+DOSKEY gcot=git checkout --track
 DOSKEY gcl=git clone
 DOSKEY gci=git commit
-DOSKEY gcim=git commit -m
-DOSKEY gciam=git commit -am
+DOSKEY gcim=git commit --message
+DOSKEY gciam=git commit --all --message
 DOSKEY gd=git diff
 DOSKEY gdc=git diff --cached
 DOSKEY gf=git fetch
@@ -64,12 +64,14 @@ DOSKEY gfo=git fetch origin
 DOSKEY gi=git init
 DOSKEY gls=git ls-files
 DOSKEY glog=git log
-DOSKEY glogs=git log --stat
-DOSKEY glogg=git log --graph --decorate
-DOSKEY glogo=git log --graph --decorate --oneline
-DOSKEY glg=git log --color --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
-DOSKEY glga=git log --color --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --all
-DOSKEY glgs=git log --color --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --stat
+DOSKEY glg=log --graph --date=human
+DOSKEY glgo=log --graph --date=human --pretty=lo
+DOSKEY glgt=log --graph --date=human --pretty=lt
+DOSKEY glgf=log --graph --date=human --pretty=lf
+DOSKEY glga=log --graph --date=human --all
+DOSKEY glgao=log --graph --date=human --all --pretty=lo
+DOSKEY glgat=log --graph --date=human --all --pretty=lt
+DOSKEY glgaf=log --graph --date=human --all --pretty=lf
 DOSKEY gm=git merge
 DOSKEY gma=git merge --abort
 DOSKEY gmc=git merge --continue
@@ -85,13 +87,17 @@ DOSKEY grmv=git remote rename
 DOSKEY grrm=git remote remove
 DOSKEY grgu=git remote get-url
 DOSKEY grsu=git remote set-url
-DOSKEY grv=git remote -v
+DOSKEY grv=git remote --verbose
 DOSKEY grb=git rebase
 DOSKEY grba=git rebase --abort
 DOSKEY grbc=git rebase --continue
 DOSKEY grbi=git rebase --interactive
 DOSKEY grbs=git rebase --skip
 DOSKEY grbm=git rebase main
+DOSKEY grl=git reflog --pretty=rlf
+DOSKEY grlo=git reflog --pretty=rlo
+DOSKEY grlt=git reflog --pretty=rlt
+DOSKEY grlf=git reflog --pretty=rlf
 DOSKEY gre=git reset
 DOSKEY greh=git reset --hard
 DOSKEY grem=git reset --mixed
@@ -101,9 +107,19 @@ DOSKEY gremh=git reset --mixed HEAD
 DOSKEY gresh=git reset --soft HEAD
 DOSKEY grehom=git reset --hard origin/main
 DOSKEY gst=git status
-DOSKEY gstall=git stash -all
+DOSKEY gsti=git status --ignored
+DOSKEY gstu=git status --untracked-files
+DOSKEY gstiu=git status --ignored --untracked-files
+DOSKEY gsa=stash -all
+DOSKEY gsl=stash list
+DOSKEY gslo=stash list --pretty=rlo
+DOSKEY gslt=stash list --pretty=rlf
+DOSKEY gslf=stash list --pretty=rlf
 DOSKEY gt=git tag
+DOSKEY gt=git tag --delete
 DOSKEY galiases=git config -l | findstr alias
+DOSKEY gnuke=git reset --hard HEAD && git clean -fd
+DOSKEY gwhoami=git config --get user.name && git config --get user.email
 
 :: clink setup
 IF EXIST "C:\Program Files\Clink\clink.bat" ( 
