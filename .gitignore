@@ -7,3 +7,6 @@ path
 
 # local configs
 *.local
+
+# fish configs
+dotfiles/config/fish/*
