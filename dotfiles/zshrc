@@ -1,4 +1,25 @@
 ###############################################################################
+# Platform Specific Dotfiles
+###############################################################################
+# Linux
+if [[ $(uname) == "Linux" ]]; then
+  [ -r ~/.linux ] && [ -f ~/.linux ] && source ~/.linux
+fi
+
+# MacOS
+if [[ $(uname) == "Darwin" ]]; then
+  [ -r ~/.macos ] && [ -f ~/.macos ] && source ~/.macos
+fi
+
+# Windows through WSL, Cygwin, MSYS2, or MinGW
+if uname -a | grep -qEi "cygwin|msys|mingw" ||
+  grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null;
+then
+  [ -r ~/.windows ] && [ -f ~/.windows ] && source ~/.windows
+fi
+
+
+###############################################################################
 # Source Shared Dotfiles
 ###############################################################################
 for file in ~/.{path,exports,aliases,functions,extra}; do

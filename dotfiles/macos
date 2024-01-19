@@ -1,0 +1,75 @@
+###############################################################################
+# Aliases
+###############################################################################
+# Open
+alias xdg-open="open"
+
+# Remove .DS_Store files
+alias dscleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# macOS has no `md5sum`, so use `md5` as a fallback
+command -v md5sum >/dev/null || alias md5sum="md5"
+
+# macOS has no `sha1sum`, so use `shasum` as a fallback
+command -v sha1sum >/dev/null || alias sha1sum="shasum"
+
+
+###############################################################################
+# Functions
+###############################################################################
+# Update homebrew
+brewup() {
+  brew update
+  brew upgrade
+  brew cleanup
+}
+
+# Clean up LaunchServices to remove duplicates in the “Open With” menu
+lscleanup() {
+  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+  killall Finder
+}
+
+# Empty the Trash
+emptytrash() {
+  sudo rm -rfv /Volumes/*/.Trashes
+  sudo rm -rfv ~/.Trash
+  sudo rm -rfv /private/var/log/asl/*.asl
+}
+
+
+###############################################################################
+# Tools
+###############################################################################
+# Homebrew
+PATH=$PATH:/opt/homebrew/bin
+if ! command -v brew &> /dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# bat
+if ! command -v bat &> /dev/null; then
+  brew install bat
+fi
+
+# lsd
+if ! command -v lsd &> /dev/null; then
+  brew install lsd
+fi
+
+# git-delta
+if ! command -v delta &> /dev/null; then
+  brew install git-delta
+fi
+
+# ripgrep
+if ! command -v rg &> /dev/null; then
+  brew install ripgrep
+fi

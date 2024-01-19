@@ -17,33 +17,6 @@ function mkcd() {
 
 
 ###############################################################################
-# Mac Specific Functions
-###############################################################################
-if [[ `uname` == "Darwin" ]]; then
-  # Update homebrew
-  brewup() {
-    brew update
-    brew upgrade
-    brew cleanup
-  }
-
-  # Clean up LaunchServices to remove duplicates in the “Open With” menu
-  lscleanup() {
-    /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
-    killall Finder
-  }
-
-  # Empty the Trash
-  emptytrash() {
-    sudo rm -rfv /Volumes/*/.Trashes
-    sudo rm -rfv ~/.Trash
-    sudo rm -rfv /private/var/log/asl/*.asl
-  }
-
-fi
-
-
-###############################################################################
 # Local Functions
 ###############################################################################
 if [[ -f ~/.functions.local ]]; then
