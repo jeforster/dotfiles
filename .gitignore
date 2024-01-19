@@ -10,3 +10,6 @@ path
 
 # fish configs
 dotfiles/config/fish/*
+
+# iterm2
+dotfiles/config/iterm2/*
