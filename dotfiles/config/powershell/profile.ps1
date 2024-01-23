@@ -70,6 +70,7 @@ function global:gbm() { git branch --move @args }
 function global:gba() { git branch --all @args }
 function global:gco() { git checkout @args }
 function global:gcob() { git checkout -b @args }
+function global:gcot() { git checkout --track @args }
 function global:gcom() { git checkout main @args }
 function global:gcl() { git clone @args }
 function global:gci() { git commit @args }
