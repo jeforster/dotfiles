@@ -133,5 +133,5 @@ function global:gstiu() { git status --ignored --untracked-files @args }
 function global:gstall() { git stash -all @args }
 function global:gt() { git tag @args }
 function global:galiases() { git config -l | findstr alias | ForEach-object { $_.SubString(6) }}
-function global:gnuke() { git reset --hard HEAD && git clean -fd }
+function global:gnuke() { git reset --hard HEAD; git clean -fd }
 function global:gwhoami() { Write-Output "$(git config --get user.name) <$(git config --get user.email)>" }
