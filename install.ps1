@@ -12,7 +12,7 @@ $PwshProfile = Join-Path -Path "${MyDocumentsDir}" -ChildPath "PowerShell\profil
 [System.IO.Directory]::CreateDirectory(${BackupDir}) | Out-Null
 
 # Loop through each primary dotfile
-Foreach($file in Get-ChildItem $DotfileDir)
+Foreach($file in Get-ChildItem -Path $DotfileDir,$WindowsDotfileDir)
 {
     $fileFullName = $file.FullName
     $fileName = $file.Name
@@ -26,26 +26,11 @@ Foreach($file in Get-ChildItem $DotfileDir)
 
     # Install the dotfile
     Copy-Item "${fileFullName}" -Destination "${dotfileFullName}" -Recurse
-}
 
-# Create backup directory for windows specific dotfiles
-[System.IO.Directory]::CreateDirectory((Join-Path -Path "${BackupDir}" -ChildPath "windows")) | Out-Null
+    # Hide the dotfile
+    $dotfileObject = Get-Item $dotfileFullName
+    $dotfileObject.Attributes = $dotfileObject.Attributes -bor [System.IO.FileAttributes]::Hidden
 
-# Loop through each Windows specific dotfile
-Foreach($file in Get-ChildItem $WindowsDotfileDir)
-{
-    $fileFullName = $file.FullName
-    $fileName = $file.Name
-    $dotfileFullName = (Join-Path -Path "${HOME}" -ChildPath ".${fileName}")
-
-    # Backup current dotfile if it exists
-    If (Test-Path -Path "${dotfileFullName}")
-    {
-        Move-Item "${dotfileFullName}" -Destination (Join-Path -Path "${BackupDir}" -ChildPath "windows\${fileName}")
-    }
-
-    # Install the dotfile
-    Copy-Item "${fileFullName}" -Destination "${dotfileFullName}" -Recurse
 }
 
 # Backup PowerShell profiles
@@ -57,6 +42,9 @@ If (Test-Path -Path "${PwshProfile}")
 {
     Move-Item "${PwshProfile}" -Destination (Join-Path -Path "${BackupDir}" -ChildPath "pwsh_profile.ps1")
 }
+
+# Command prompt autorun cmdrc.bat
+reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /d "%userprofile%\.cmdrc.bat" /t REG_SZ /f
 
 # Install the new Powershell profile
 Copy-Item "${NewProfile}" -Destination "${PowerShellProfile}"
