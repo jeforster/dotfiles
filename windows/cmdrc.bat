@@ -117,21 +117,11 @@ DOSKEY gslt=stash list --pretty=rlf
 DOSKEY gslf=stash list --pretty=rlf
 DOSKEY gt=git tag
 DOSKEY gt=git tag --delete
-DOSKEY galiases=git config -l | findstr alias
+DOSKEY galiases=git config --list
 DOSKEY gnuke=git reset --hard HEAD && git clean -fd
 DOSKEY gwhoami=git config --get user.name && git config --get user.email
 
 :: clink setup
-IF EXIST "C:\Program Files\Clink\clink.bat" ( 
-    "C:\Program Files\Clink\clink.bat" inject --autorun --profile ~\clink --quiet
-) ELSE IF EXIST "C:\Program Files (x86)\clink\clink.bat" ( 
-    "C:\Program Files (x86)\clink\clink.bat" inject --autorun --profile ~\clink --quiet
-) ELSE IF EXIST "C:\Program Files\clink\1.0.0a1\clink.bat" ( 
-    "C:\Program Files\clink\1.0.0a1\clink.bat" inject --autorun --profile ~\clink --quiet
-) ELSE IF EXIST "C:\Program Files (x86)\clink\1.0.0a1\clink.bat" ( 
-    "C:\Program Files (x86)\clink\1.0.0a1\clink.bat" inject --autorun --profile ~\clink --quiet
-) ELSE IF EXIST "C:\Program Files\clink\0.4.9\clink.bat" ( 
-    "C:\Program Files\clink\0.4.9\clink.bat" inject --autorun --profile ~\clink --quiet
-) ELSE IF EXIST "C:\Program Files (x86)\clink\0.4.9\clink.bat" ( 
-    "C:\Program Files (x86)\clink\0.4.9\clink.bat" inject --autorun --profile ~\clink --quiet
+IF EXIST "%programfiles(x86)%\clink\clink.bat" ( 
+  "%programfiles(x86)%\clink\clink.bat" inject --autorun --profile ~\clink --quiet
 )
