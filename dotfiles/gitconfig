@@ -139,7 +139,7 @@
   td = tag --delete
 
   # aliases
-  aliases = !git config --list | grep alias
+  aliases = !git config  --get-regexp ^alias
 
   # nuke
   nuke = "!git reset --hard HEAD && git clean -fd"

@@ -117,9 +117,9 @@ DOSKEY gslt=stash list --pretty=rlf
 DOSKEY gslf=stash list --pretty=rlf
 DOSKEY gt=git tag
 DOSKEY gt=git tag --delete
-DOSKEY galiases=git config --list
-DOSKEY gnuke=git reset --hard HEAD && git clean -fd
-DOSKEY gwhoami=git config --get user.name && git config --get user.email
+DOSKEY galiases=git config --get-regexp ^alias
+DOSKEY gnuke=git nuke
+DOSKEY gwhoami=git whoami
 
 :: clink setup
 IF EXIST "%programfiles(x86)%\clink\clink.bat" ( 
