@@ -64,14 +64,14 @@ DOSKEY gfo=git fetch origin
 DOSKEY gi=git init
 DOSKEY gls=git ls-files
 DOSKEY glog=git log
-DOSKEY glg=log --graph --date=human
-DOSKEY glgo=log --graph --date=human --pretty=lo
-DOSKEY glgt=log --graph --date=human --pretty=lt
-DOSKEY glgf=log --graph --date=human --pretty=lf
-DOSKEY glga=log --graph --date=human --all
-DOSKEY glgao=log --graph --date=human --all --pretty=lo
-DOSKEY glgat=log --graph --date=human --all --pretty=lt
-DOSKEY glgaf=log --graph --date=human --all --pretty=lf
+DOSKEY glg=git log --graph --date=human
+DOSKEY glgo=git log --graph --date=human --pretty=lo
+DOSKEY glgt=git log --graph --date=human --pretty=lt
+DOSKEY glgf=git log --graph --date=human --pretty=lf
+DOSKEY glga=git log --graph --date=human --all
+DOSKEY glgao=git log --graph --date=human --all --pretty=lo
+DOSKEY glgat=git log --graph --date=human --all --pretty=lt
+DOSKEY glgaf=git log --graph --date=human --all --pretty=lf
 DOSKEY gm=git merge
 DOSKEY gma=git merge --abort
 DOSKEY gmc=git merge --continue
@@ -110,11 +110,11 @@ DOSKEY gst=git status
 DOSKEY gsti=git status --ignored
 DOSKEY gstu=git status --untracked-files
 DOSKEY gstiu=git status --ignored --untracked-files
-DOSKEY gsa=stash -all
-DOSKEY gsl=stash list
-DOSKEY gslo=stash list --pretty=rlo
-DOSKEY gslt=stash list --pretty=rlf
-DOSKEY gslf=stash list --pretty=rlf
+DOSKEY gsa=git stash -all
+DOSKEY gsl=git stash list
+DOSKEY gslo=git stash list --pretty=rlo
+DOSKEY gslt=git stash list --pretty=rlf
+DOSKEY gslf=git stash list --pretty=rlf
 DOSKEY gt=git tag
 DOSKEY gt=git tag --delete
 DOSKEY galiases=git config --get-regexp ^alias
