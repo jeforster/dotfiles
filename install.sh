@@ -21,7 +21,7 @@ create_backup_directory() {
 #   dotfile_name
 backup_dotfile() {
   dotfile_name=$1
-  if [ -f ~/.$dotfile_name ]; then
+  if [ -e ~/.$dotfile_name ]; then
     echo -n "Backing up existing file..."
     mv ~/.$dotfile_name $backup_directory/$dotfile_name
     echo "done"
