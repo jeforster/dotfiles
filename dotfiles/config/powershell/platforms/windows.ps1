@@ -32,5 +32,11 @@ if ($IsAdmin) {
 function global:chocoup() { 
     choco upgrade chocolatey
     choco upgrade all -y
-    choco clean
+
+    # Remove shortcuts from current user's desktop
+    Remove-Item "$env:USERPROFILE\Desktop\*.lnk" -Force -ErrorAction SilentlyContinue
+
+    # Remove shortcuts from public desktop
+    Remove-Item "$env:PUBLIC\Desktop\*.lnk" -Force -ErrorAction SilentlyContinue
+
 }
