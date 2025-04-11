@@ -27,3 +27,10 @@ if ($IsAdmin) {
         }
     }
 }
+
+# Update Chocolatey and all packages
+function global:chocoup() { 
+    choco upgrade chocolatey
+    choco upgrade all -y
+    choco clean
+}
