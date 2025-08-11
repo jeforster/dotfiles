@@ -135,3 +135,18 @@ function global:gt() { git tag @args }
 function global:galiases() { git config -l | findstr alias | ForEach-object { $_.SubString(6) }}
 function global:gnuke() { git reset --hard HEAD; git clean -fd }
 function global:gwhoami() { Write-Output "$(git config --get user.name) <$(git config --get user.email)>" }
+
+# Docker aliases
+function global:d() { docker @args }
+function global:dps() { docker ps @args }
+function global:dpsa() { docker ps -a @args }
+function global:dc() { docker-compose @args }
+function global:dcu() { docker-compose up @args }
+function global:dcud() { docker-compose up -d @args }
+function global:dcd() { docker-compose down @args }
+function global:dcb() { docker-compose build @args }
+function global:dcl() { docker-compose logs @args }
+function global:dclf() { docker-compose logs -f @args }
+function global:dcr() { docker-compose run @args }
+function global:dce() { docker-compose exec @args }
+function global:dcps() { docker-compose ps @args }

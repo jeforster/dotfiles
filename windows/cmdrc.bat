@@ -121,6 +121,21 @@ DOSKEY galiases=git config --get-regexp ^alias
 DOSKEY gnuke=git nuke
 DOSKEY gwhoami=git whoami
 
+:: Docker aliases
+DOSKEY d=docker
+DOSKEY dps=docker ps
+DOSKEY dpsa=docker ps -a
+DOSKEY dc=docker-compose
+DOSKEY dcu=docker-compose up
+DOSKEY dcud=docker-compose up -d
+DOSKEY dcd=docker-compose down
+DOSKEY dcb=docker-compose build
+DOSKEY dcl=docker-compose logs
+DOSKEY dclf=docker-compose logs -f
+DOSKEY dcr=docker-compose run
+DOSKEY dce=docker-compose exec
+DOSKEY dcps=docker-compose ps
+
 :: clink setup
 IF EXIST "%programfiles(x86)%\clink\clink.bat" ( 
   "%programfiles(x86)%\clink\clink.bat" inject --autorun --profile ~\clink --quiet
