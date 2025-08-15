@@ -36,6 +36,9 @@ function global:chocoup() {
     # Remove shortcuts from current user's desktop
     Remove-Item "$env:USERPROFILE\Desktop\*.lnk" -Force -ErrorAction SilentlyContinue
 
+    # Remove shortcuts from OneDrive desktop
+    Remove-Item -Path "$env:OneDrive\Desktop\*.lnk" -Force -ErrorAction SilentlyContinue
+
     # Remove shortcuts from public desktop
     Remove-Item "$env:PUBLIC\Desktop\*.lnk" -Force -ErrorAction SilentlyContinue
 
