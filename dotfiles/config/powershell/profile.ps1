@@ -26,8 +26,12 @@ if (Get-Module -ListAvailable -Name PSReadLine) {
 }
 
 # Import modules
-Import-Module -Name Terminal-Icons
-Import-Module -Name PSReadLine
+if (-not (Get-Module -Name Terminal-Icons)) {
+    Import-Module Terminal-Icons
+}
+if (-not (Get-Module -Name PSReadLine)) {
+    Import-Module PSReadLine
+}
 
 # PSReadline setup
 Set-PSReadLineOption -PredictionSource History
