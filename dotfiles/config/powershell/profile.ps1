@@ -12,30 +12,43 @@ elseif ($IsLinux)
     . "${HOME}\.config\powershell\platforms\linux.ps1"
 }
 
-# Install modules
-if (!(Get-Module -ListAvailable -Name Terminal-Icons)) {
-    Install-Module -Name Terminal-Icons -Repository PSGallery -Force
-}
-if (Get-Module -ListAvailable -Name PSReadLine) {
-    $currentVersion = (Get-Module -ListAvailable -Name PSReadLine).Version
-    if ($currentVersion -lt [Version]"2.2.6") {
-        Update-Module -Name PSReadLine -Force
+# Install modules only in interactive sessions
+if ([Environment]::UserInteractive) {
+    try {
+        # Install modules
+        if (!(Get-Module -ListAvailable -Name Terminal-Icons)) {
+            Install-Module -Name Terminal-Icons -Repository PSGallery -Force -Scope CurrentUser
+        }
+        if (Get-Module -ListAvailable -Name PSReadLine) {
+            $currentVersion = (Get-Module -ListAvailable -Name PSReadLine).Version
+            if ($currentVersion -lt [Version]"2.2.6") {
+                Update-Module -Name PSReadLine -Force -Scope CurrentUser
+            }
+        } else {
+            Install-Module -Name PSReadLine -Force -MinimumVersion "2.2.6" -Scope CurrentUser
+        }
+
+        # Import modules
+        if (-not (Get-Module -Name Terminal-Icons)) {
+            Import-Module Terminal-Icons
+        }
+        if (-not (Get-Module -Name PSReadLine)) {
+            Import-Module PSReadLine
+        }
     }
-} else {
-    Install-Module -Name PSReadLine -Force -MinimumVersion "2.2.6"
+    catch {
+        # Silently continue if module operations fail
+    }
 }
 
-# Import modules
-if (-not (Get-Module -Name Terminal-Icons)) {
-    Import-Module Terminal-Icons
-}
-if (-not (Get-Module -Name PSReadLine)) {
-    Import-Module PSReadLine
-}
 
 # PSReadline setup
-Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle InlineView
+if ($PSVersionTable.PSVersion.Major -ge 7) {
+    Set-PSReadLineOption -PredictionSource History
+    Set-PSReadLineOption -PredictionViewStyle InlineView
+} else {
+    Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+}
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
