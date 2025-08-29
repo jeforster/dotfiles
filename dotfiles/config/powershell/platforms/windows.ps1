@@ -28,11 +28,7 @@ if ($IsAdmin) {
     }
 }
 
-# Update Chocolatey and all packages
-function global:chocoup() { 
-    choco upgrade chocolatey
-    choco upgrade all -y
-
+function global:Clear-DesktopShortcuts() {
     # Remove shortcuts from current user's desktop
     Remove-Item "$env:USERPROFILE\Desktop\*.lnk" -Force -ErrorAction SilentlyContinue
 
@@ -41,5 +37,12 @@ function global:chocoup() {
 
     # Remove shortcuts from public desktop
     Remove-Item "$env:PUBLIC\Desktop\*.lnk" -Force -ErrorAction SilentlyContinue
+}
 
+# Update Chocolatey and all packages
+function global:chocoup() { 
+    choco upgrade chocolatey
+    choco upgrade all -y
+
+    Clear-DesktopShortcuts
 }
