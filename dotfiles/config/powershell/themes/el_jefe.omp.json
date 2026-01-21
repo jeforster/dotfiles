@@ -31,7 +31,7 @@
             "display_user": false
           },
           "style": "powerline",
-          "template": " <#FFFFFF>\uF108 {{ .HostName }}</> ",
+          "template": " \uF108 {{ .HostName }}</> ",
           "type": "session"
         },
         {
