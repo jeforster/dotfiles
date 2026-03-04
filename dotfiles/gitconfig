@@ -80,6 +80,7 @@
   ps = push
   pso = push origin
   psoh = push origin HEAD
+  psuoh = push -u origin HEAD
 
   # pull
   pl = pull
@@ -169,6 +170,9 @@
 [delta]
   line-numbers = true
   side-by-side = true
+
+[push]
+  autoSetupRemote = true
 
 [include]
   path = ~/.gitconfig.local

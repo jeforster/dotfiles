@@ -117,6 +117,7 @@ function global:gmm() { git merge main @args }
 function global:gps() { git push @args }
 function global:gpso() { git push origin @args }
 function global:gpsoh() { git push origin HEAD @args }
+function global:gpsuoh() { git push -u origin HEAD @args }
 function global:gpl() { git pull @args }
 function global:gr() { git remote @args }
 function global:gra() { git remote add @args }

@@ -80,6 +80,7 @@ DOSKEY gmm=git merge main
 DOSKEY gps=git push
 DOSKEY gpso=git push origin
 DOSKEY gpsoh=git push origin HEAD
+DOSKEY gpsuoh=git push -u origin HEAD
 DOSKEY gpl=git pull
 DOSKEY gr=git remote
 DOSKEY gra=git remote add
